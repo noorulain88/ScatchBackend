@@ -1,0 +1,20 @@
+PACKAGES IN THIS BACKEND
+(debug  ko enviromental variables ke zroorat hoti ha wrna console and terminal message not seen so the formula is {set DEBUG=development:*} then run a npx nodemon so u see a message )
+{setup enviromental variables i window by (setx NODE_ENV "development")}
+
+{seach about joi}
+- npm init -y
+--npm i express
+---npm i cookie-parser
+----npm i jsonwebtoken 
+-----npm i ejs 
+------npm i connect-flash 
+-------npm i express-session
+--------npm i mongoose
+---------npm i bcrypt
+----------npm i multer
+-----------npm i debug
+------------npm i config
+-------------npm i dotenv
+
+  
