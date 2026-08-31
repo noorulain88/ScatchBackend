@@ -17,7 +17,6 @@ require('dotenv').config();
 
 app.use(
     session({
-
         secret: process.env.JWT_ENV,
         resave: false,
         saveUninitialized: false,
@@ -36,4 +35,11 @@ app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use('/', indexRouter);
 
-app.listen(3000);
+if (require.main === module) {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+}
+
+module.exports = app;

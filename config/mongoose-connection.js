@@ -1,15 +1,20 @@
 const mongoose = require('mongoose');
-const config = require('config');
+require('dotenv').config();
 
 const dbgr = require('debug')('development:mongoose');
-mongoose
-    .connect(`${config.get('MONGODB_URI')}`)
-    .then(function () {
-        dbgr('mongoose connection connected successfully ');
-    })
-    .catch(function (err) {
-        dbgr(' mongoose connection failed', err);
-    });
-module.exports = mongoose.connection;
+const mongoUri = process.env.MONGODB_URI;
 
-// "MONGODB_URI": "mongodb://127.0.0.1:27017"
+if (!mongoUri) {
+    dbgr('MONGODB_URI is not defined in environment variables');
+} else {
+    mongoose
+        .connect(mongoUri)
+        .then(function () {
+            dbgr('mongoose connection connected successfully');
+        })
+        .catch(function (err) {
+            dbgr('mongoose connection failed', err);
+        });
+}
+
+module.exports = mongoose.connection;
